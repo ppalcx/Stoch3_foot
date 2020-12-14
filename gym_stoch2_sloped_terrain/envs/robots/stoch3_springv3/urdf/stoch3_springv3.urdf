@@ -1,0 +1,1188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="stoch3_springv3">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0026538"
+        rpy="0 0 0" />
+      <mass
+        value="7.302" />
+      <inertia
+        ixx="0.0090197"
+        ixy="2.2679E-06"
+        ixz="6.4897E-05"
+        iyy="0.0094033"
+        iyz="-2.1628E-08"
+        izz="0.01573" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="fl_abd_link">
+    <inertial>
+      <origin
+        xyz="0.070269 -0.036118 -2.5986E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.978" />
+      <inertia
+        ixx="0.00045941"
+        ixy="-6.723E-07"
+        ixz="3.3247E-08"
+        iyy="0.00059328"
+        iyz="5.8809E-09"
+        izz="0.00046214" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fl_abd_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fl_abd_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_abd_joint"
+    type="revolute">
+    <origin
+      xyz="0.18598 0.10004 -0.0005"
+      rpy="0 0 0.00021134" />
+    <parent
+      link="base_link" />
+    <child
+      link="fl_abd_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-3.5708"
+      upper="3.5708"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="fl_upper_leg_link">
+    <inertial>
+      <origin
+        xyz="-0.072527 0.076425 1.3632E-05"
+        rpy="0 0 0" />
+      <mass
+        value="1.547" />
+      <inertia
+        ixx="0.00031538"
+        ixy="-4.0486E-06"
+        ixz="-4.8939E-07"
+        iyy="0.0031011"
+        iyz="6.3718E-11"
+        izz="0.0028703" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fl_upper_leg_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fl_upper_leg_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_hip_joint"
+    type="revolute">
+    <origin
+      xyz="0.074 -0.01975 0"
+      rpy="0 0 0" />
+    <parent
+      link="fl_abd_link" />
+    <child
+      link="fl_upper_leg_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5708"
+      upper="6.2832"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="fl_lower_leg_link">
+    <inertial>
+      <origin
+        xyz="0.086252 5.8285E-07 0.0035444"
+        rpy="0 0 0" />
+      <mass
+        value="0.185" />
+      <inertia
+        ixx="2.0675E-05"
+        ixy="-2.4323E-09"
+        ixz="-3.9572E-05"
+        iyy="0.0010886"
+        iyz="-8.8856E-10"
+        izz="0.0010716" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fl_lower_leg_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fl_lower_leg_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_knee_joint"
+    type="revolute">
+    <origin
+      xyz="-0.297000000025889 0.1385 0"
+      rpy="0 0 0" />
+    <parent
+      link="fl_upper_leg_link" />
+    <child
+      link="fl_lower_leg_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-6.28"
+      upper="6.28"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="fl_spring_link">
+    <inertial>
+      <origin
+        xyz="0.016432 -1.2088E-10 -0.025935"
+        rpy="0 0 0" />
+      <mass
+        value="0.013" />
+      <inertia
+        ixx="1.5151E-06"
+        ixy="3.6872E-16"
+        ixz="7.9114E-08"
+        iyy="2.0495E-06"
+        iyz="-6.4647E-15"
+        izz="6.6246E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fl_spring_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fl_spring_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_spring_joint"
+    type="prismatic">
+    <origin
+      xyz="0.26294 0 0.022728"
+      rpy="0 0 0" />
+    <parent
+      link="fl_lower_leg_link" />
+    <child
+      link="fl_spring_link" />
+    <axis
+      xyz="0.96487 0 -0.26274" />
+    <limit
+      lower="-0.05"
+      upper="0"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="fl_end_effector_link">
+    <inertial>
+      <origin
+        xyz="0.00030474 -7.6325E-12 -0.0016376"
+        rpy="0 0 0" />
+      <mass
+        value="0.003" />
+      <inertia
+        ixx="1.2265E-09"
+        ixy="1.4499E-19"
+        ixz="3.1109E-11"
+        iyy="3.2386E-10"
+        iyz="4.7001E-18"
+        izz="1.3323E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fl_end_effector_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fl_end_effector_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_end_effector_joint"
+    type="fixed">
+    <origin
+      xyz="0.25316 0 -0.01044"
+      rpy="0 0 0" />
+    <parent
+      link="fl_lower_leg_link" />
+    <child
+      link="fl_end_effector_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="fr_abd_link">
+    <inertial>
+      <origin
+        xyz="0.07027 0.036118 -2.957E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.978" />
+      <inertia
+        ixx="0.00045941"
+        ixy="6.965E-07"
+        ixz="-3.3418E-08"
+        iyy="0.00059328"
+        iyz="-5.8773E-09"
+        izz="0.00046214" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fr_abd_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fr_abd_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_abd_joint"
+    type="revolute">
+    <origin
+      xyz="0.18602 -0.099961 -0.0005"
+      rpy="0 0 0.00021134" />
+    <parent
+      link="base_link" />
+    <child
+      link="fr_abd_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-3.5708"
+      upper="3.5708"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="fr_upper_leg_link">
+    <inertial>
+      <origin
+        xyz="-0.072527 -0.076425 -1.3632E-05"
+        rpy="0 0 0" />
+      <mass
+        value="1.547" />
+      <inertia
+        ixx="0.00031538"
+        ixy="4.0486E-06"
+        ixz="4.8939E-07"
+        iyy="0.0031011"
+        iyz="6.3714E-11"
+        izz="0.0028703" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fr_upper_leg_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fr_upper_leg_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_hip_joint"
+    type="revolute">
+    <origin
+      xyz="0.074 0.01975 0"
+      rpy="0 0 0" />
+    <parent
+      link="fr_abd_link" />
+    <child
+      link="fr_upper_leg_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5708"
+      upper="6.2832"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="fr_lower_leg_link">
+    <inertial>
+      <origin
+        xyz="0.086252 5.8285E-07 0.0035444"
+        rpy="0 0 0" />
+      <mass
+        value="0.185" />
+      <inertia
+        ixx="2.0675E-05"
+        ixy="-2.4323E-09"
+        ixz="-3.9572E-05"
+        iyy="0.0010886"
+        iyz="-8.8856E-10"
+        izz="0.0010716" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fr_lower_leg_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fr_lower_leg_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_knee_joint"
+    type="revolute">
+    <origin
+      xyz="-0.297 -0.1385 0"
+      rpy="0 0 0" />
+    <parent
+      link="fr_upper_leg_link" />
+    <child
+      link="fr_lower_leg_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-6.28"
+      upper="6.28"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="fr_spring_link">
+    <inertial>
+      <origin
+        xyz="0.016432 -1.2088E-10 -0.025935"
+        rpy="0 0 0" />
+      <mass
+        value="0.013" />
+      <inertia
+        ixx="1.5151E-06"
+        ixy="3.6872E-16"
+        ixz="7.9114E-08"
+        iyy="2.0495E-06"
+        iyz="-6.4647E-15"
+        izz="6.6246E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fr_spring_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fr_spring_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_spring_joint"
+    type="prismatic">
+    <origin
+      xyz="0.26294023218503 0 0.0227277371882955"
+      rpy="0 0 0" />
+    <parent
+      link="fr_lower_leg_link" />
+    <child
+      link="fr_spring_link" />
+    <axis
+      xyz="0.964866586334683 0 -0.262740310144551" />
+    <limit
+      lower="-0.05"
+      upper="0"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="fr_end_effector_link">
+    <inertial>
+      <origin
+        xyz="0.00030474 -7.6323E-12 -0.0016376"
+        rpy="0 0 0" />
+      <mass
+        value="0.003" />
+      <inertia
+        ixx="1.2265E-09"
+        ixy="1.4499E-19"
+        ixz="3.1109E-11"
+        iyy="3.2386E-10"
+        iyz="4.7001E-18"
+        izz="1.3323E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fr_end_effector_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/fr_end_effector_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_end_effector_joint"
+    type="fixed">
+    <origin
+      xyz="0.25316 0 -0.01044"
+      rpy="0 0 0" />
+    <parent
+      link="fr_lower_leg_link" />
+    <child
+      link="fr_end_effector_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="bl_abd_link">
+    <inertial>
+      <origin
+        xyz="-0.069942 -0.037337 -1.868E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.978" />
+      <inertia
+        ixx="0.00039025"
+        ixy="3.5854E-08"
+        ixz="1.1626E-07"
+        iyy="0.00050148"
+        iyz="5.3875E-09"
+        izz="0.00037524" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/bl_abd_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/bl_abd_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_abd_joint"
+    type="revolute">
+    <origin
+      xyz="-0.18602 0.099961 -0.0005"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="bl_abd_link" />
+    <axis
+      xyz="-1 -0.00021136 0" />
+    <limit
+      lower="-3.5708"
+      upper="3.5708"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="bl_upper_leg_link">
+    <inertial>
+      <origin
+        xyz="-0.072543 0.076409 1.3632E-05"
+        rpy="0 0 0" />
+      <mass
+        value="1.547" />
+      <inertia
+        ixx="0.00031539"
+        ixy="-4.6374E-06"
+        ixz="-4.8939E-07"
+        iyy="0.0031011"
+        iyz="-3.9719E-11"
+        izz="0.0028703" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/bl_upper_leg_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/bl_upper_leg_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_hip_joint"
+    type="revolute">
+    <origin
+      xyz="-0.073996 -0.019766 0"
+      rpy="0 0 0" />
+    <parent
+      link="bl_abd_link" />
+    <child
+      link="bl_upper_leg_link" />
+    <axis
+      xyz="0.00021136 -1 0" />
+    <limit
+      lower="-1.5708"
+      upper="6.2832"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="bl_lower_leg_link">
+    <inertial>
+      <origin
+        xyz="0.086252 1.8813E-05 0.0035444"
+        rpy="0 0 0" />
+      <mass
+        value="0.185" />
+      <inertia
+        ixx="2.0675E-05"
+        ixy="-2.2814E-07"
+        ixz="-3.9572E-05"
+        iyy="0.0010886"
+        iyz="-9.2525E-09"
+        izz="0.0010716" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/bl_lower_leg_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/bl_lower_leg_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_knee_joint"
+    type="revolute">
+    <origin
+      xyz="-0.29703 0.13844 0"
+      rpy="0 0 0" />
+    <parent
+      link="bl_upper_leg_link" />
+    <child
+      link="bl_lower_leg_link" />
+    <axis
+      xyz="-0.00021136 1 0" />
+    <limit
+      lower="-6.28"
+      upper="6.28"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="bl_spring_link">
+    <inertial>
+      <origin
+        xyz="0.016432 3.4731E-06 -0.025935"
+        rpy="0 0 0" />
+      <mass
+        value="0.013" />
+      <inertia
+        ixx="1.5151E-06"
+        ixy="-1.1295E-10"
+        ixz="7.9114E-08"
+        iyy="2.0495E-06"
+        iyz="1.6715E-11"
+        izz="6.6246E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/bl_spring_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/bl_spring_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_spring_joint"
+    type="prismatic">
+    <origin
+      xyz="0.26294 5.5576E-05 0.022728"
+      rpy="0 0 0" />
+    <parent
+      link="bl_lower_leg_link" />
+    <child
+      link="bl_spring_link" />
+    <axis
+      xyz="0.96487 0.00020393 -0.26274" />
+    <limit
+      lower="-0.05"
+      upper="0"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="bl_end_effector_link">
+    <inertial>
+      <origin
+        xyz="0.00030474 -7.6322E-12 -0.0016376"
+        rpy="0 0 0" />
+      <mass
+        value="0.003" />
+      <inertia
+        ixx="1.2265E-09"
+        ixy="1.4499E-19"
+        ixz="3.1109E-11"
+        iyy="3.2386E-10"
+        iyz="4.7001E-18"
+        izz="1.3323E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/bl_end_effector_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/bl_end_effector_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_end_effector_joint"
+    type="fixed">
+    <origin
+      xyz="0.25316 5.3508E-05 -0.01044"
+      rpy="0 0 0.00021136" />
+    <parent
+      link="bl_lower_leg_link" />
+    <child
+      link="bl_end_effector_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="br_abd_link">
+    <inertial>
+      <origin
+        xyz="-0.070181 0.037273 -1.5886E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.978" />
+      <inertia
+        ixx="0.00038996"
+        ixy="-9.3213E-07"
+        ixz="-8.0337E-08"
+        iyy="0.00050185"
+        iyz="-1.1127E-09"
+        izz="0.00037578" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/br_abd_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/br_abd_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_abd_joint"
+    type="revolute">
+    <origin
+      xyz="-0.18598 -0.10004 -0.0005"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="br_abd_link" />
+    <axis
+      xyz="-1 -0.00021136 0" />
+    <limit
+      lower="-3.5708"
+      upper="3.5708"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="br_upper_leg_link">
+    <inertial>
+      <origin
+        xyz="-0.072511 -0.07644 -1.3632E-05"
+        rpy="0 0 0" />
+      <mass
+        value="1.547" />
+      <inertia
+        ixx="0.00031538"
+        ixy="3.4598E-06"
+        ixz="4.8939E-07"
+        iyy="0.0031011"
+        iyz="1.6716E-10"
+        izz="0.0028703" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/br_upper_leg_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/br_upper_leg_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_hip_joint"
+    type="revolute">
+    <origin
+      xyz="-0.074004 0.019734 0"
+      rpy="0 0 0" />
+    <parent
+      link="br_abd_link" />
+    <child
+      link="br_upper_leg_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5708"
+      upper="6.2832"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="br_lower_leg_link">
+    <inertial>
+      <origin
+        xyz="0.086252 1.8813E-05 0.0035444"
+        rpy="0 0 0" />
+      <mass
+        value="0.185" />
+      <inertia
+        ixx="2.0675E-05"
+        ixy="-2.2814E-07"
+        ixz="-3.9572E-05"
+        iyy="0.0010886"
+        iyz="-9.2525E-09"
+        izz="0.0010716" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/br_lower_leg_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/br_lower_leg_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_knee_joint"
+    type="revolute">
+    <origin
+      xyz="-0.29697 -0.13856 0"
+      rpy="0 0 0" />
+    <parent
+      link="br_upper_leg_link" />
+    <child
+      link="br_lower_leg_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-6.28"
+      upper="6.28"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="br_spring_link">
+    <inertial>
+      <origin
+        xyz="0.016432 -1.2088E-10 -0.025935"
+        rpy="0 0 0" />
+      <mass
+        value="0.013" />
+      <inertia
+        ixx="1.5151E-06"
+        ixy="3.6872E-16"
+        ixz="7.9114E-08"
+        iyy="2.0495E-06"
+        iyz="-6.4647E-15"
+        izz="6.6246E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/br_spring_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/br_spring_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_spring_joint"
+    type="prismatic">
+    <origin
+      xyz="0.26294 5.5576E-05 0.022728"
+      rpy="0 0 0.00021136" />
+    <parent
+      link="br_lower_leg_link" />
+    <child
+      link="br_spring_link" />
+    <axis
+      xyz="0.96487 0 -0.26274" />
+    <limit
+      lower="-0.05"
+      upper="0"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="br_end_effector_link">
+    <inertial>
+      <origin
+        xyz="0.00030474 -7.6324E-12 -0.0016376"
+        rpy="0 0 0" />
+      <mass
+        value="0.003" />
+      <inertia
+        ixx="1.2265E-09"
+        ixy="1.4499E-19"
+        ixz="3.1109E-11"
+        iyy="3.2386E-10"
+        iyz="4.7001E-18"
+        izz="1.3323E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/br_end_effector_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stoch3_springv3/meshes/br_end_effector_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_end_effector_joint"
+    type="fixed">
+    <origin
+      xyz="0.25316 5.3508E-05 -0.01044"
+      rpy="0 0 0.00021136" />
+    <parent
+      link="br_lower_leg_link" />
+    <child
+      link="br_end_effector_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
