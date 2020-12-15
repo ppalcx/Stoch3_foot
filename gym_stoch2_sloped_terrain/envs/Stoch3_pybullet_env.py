@@ -216,14 +216,14 @@ class Stoch3Env(gym.Env):
 
             self.SetWedgeFriction(0.7)
 
-        model_path = 'gym_stoch2_sloped_terrain/envs/robots/stoch_spring/urdf/stoch_spring.urdf'
+        model_path = 'gym_stoch2_sloped_terrain/envs/robots/stoch3/urdf/stoch3.urdf'
         self.Stoch3 = self._pybullet_client.loadURDF(model_path, self.INIT_POSITION, self.INIT_ORIENTATION)
 
         self._joint_name_to_id, self._motor_id_list = self.BuildMotorIdList()
 
         self.ResetLeg()
         self.ResetPoseForAbd()
-        self.ActuateSpring()
+        #self.ActuateSpring()
 
         if self._on_rack:
             self._pybullet_client.createConstraint(
@@ -298,7 +298,7 @@ class Stoch3Env(gym.Env):
         self.reset_standing_position()
 
 
-        LINK_ID = [0,4,9,14,19]
+        LINK_ID = [0,3,7,11,15]
         i=0
         for  link_id in LINK_ID:
             if(link_id!=0):
@@ -564,7 +564,7 @@ class Stoch3Env(gym.Env):
             force_visualizing_counter = 0
 
             for _ in range(n_frames):
-                self.ActuateSpring()
+               # self.ActuateSpring()
                 applied_motor_torque = self._apply_pd_control(m_angle_cmd_ext, m_vel_cmd_ext)
                 self._pybullet_client.stepSimulation()
 
@@ -672,7 +672,7 @@ class Stoch3Env(gym.Env):
         return reward, done
 
     def vis_foot_traj(self,line_thickness = 5,life_time = 15):
-        LINK_ID = [0,3,8,13,18]
+        LINK_ID = [0,3,7,11,15]
         i=0
         for  link_id in LINK_ID:
             if(link_id!=0):
@@ -778,7 +778,7 @@ class Stoch3Env(gym.Env):
 		Ret  :
 		foot_friction :  current coefficient of friction
 		'''
-        FOOT_LINK_ID = [3, 8, 13, 18]
+        FOOT_LINK_ID = [3, 7, 11, 15]
         for link_id in FOOT_LINK_ID:
             self._pybullet_client.changeDynamics(
                 self.Stoch3, link_id, lateralFriction=foot_friction)
@@ -831,12 +831,8 @@ class Stoch3Env(gym.Env):
 
                            "bl_hip_joint",
                            "bl_knee_joint",
-                           "bl_abd_joint",
+                           "bl_abd_joint"
 
-                           "fl_spring_joint",
-                           "br_spring_joint",
-                           "fr_spring_joint",
-                           "bl_spring_joint"
                            ]
 
         motor_id_list = [joint_name_to_id[motor_name] for motor_name in MOTOR_NAMES]
@@ -1006,91 +1002,3 @@ class Stoch3Env(gym.Env):
             targetVelocity=0
         )
 
-    def ResetPoseForSpring(self):
-        '''
-        Reset initial conditions of abduction joints
-        '''
-        self._pybullet_client.resetJointState(
-            self.Stoch3,
-            self._joint_name_to_id["fl_spring_joint"],
-            targetValue=0, targetVelocity=0)
-        self._pybullet_client.resetJointState(
-            self.Stoch3,
-            self._joint_name_to_id["br_spring_joint"],
-            targetValue=0, targetVelocity=0)
-        self._pybullet_client.resetJointState(
-            self.Stoch3,
-            self._joint_name_to_id["fr_spring_joint"],
-            targetValue=0, targetVelocity=0)
-        self._pybullet_client.resetJointState(
-            self.Stoch3,
-            self._joint_name_to_id["bl_spring_joint"],
-            targetValue=0, targetVelocity=0)
-
-        self._pybullet_client.setJointMotorControl2(
-            bodyIndex=self.Stoch3,
-            jointIndex=self._joint_name_to_id["fl_spring_joint"],
-            controlMode=self._pybullet_client.VELOCITY_CONTROL,
-            targetVelocity=0,
-            force=0)
-
-        self._pybullet_client.setJointMotorControl2(
-            bodyIndex=self.Stoch3,
-            jointIndex=self._joint_name_to_id["br_spring_joint"],
-            controlMode=self._pybullet_client.VELOCITY_CONTROL,
-            targetVelocity=0,
-            force=0)
-        self._pybullet_client.setJointMotorControl2(
-            bodyIndex=self.Stoch3,
-            jointIndex=self._joint_name_to_id["fr_spring_joint"],
-            controlMode=self._pybullet_client.VELOCITY_CONTROL,
-            targetVelocity=0,
-            force=0)
-
-        self._pybullet_client.setJointMotorControl2(
-            bodyIndex=self.Stoch3,
-            jointIndex=self._joint_name_to_id["bl_spring_joint"],
-            controlMode=self._pybullet_client.VELOCITY_CONTROL,
-            targetVelocity=0,
-            force=0)
-
-        # Set control mode for each motor and initial conditions
-    def ActuateSpring(self):
-        F=180
-        k_p =0.001
-        k_d =0.178
-        self._pybullet_client.setJointMotorControl2(
-            bodyIndex=self.Stoch3,
-            jointIndex=(self._joint_name_to_id["fl_spring_joint"]),
-            controlMode=self._pybullet_client.POSITION_CONTROL,
-            targetPosition=0,
-            positionGain=k_p,
-            velocityGain=k_d
-            #force=F
-        )
-        self._pybullet_client.setJointMotorControl2(
-            bodyIndex=self.Stoch3,
-            jointIndex=(self._joint_name_to_id["br_spring_joint"]),
-            controlMode=self._pybullet_client.POSITION_CONTROL,
-            targetPosition=0,
-            positionGain=k_p,
-            velocityGain=k_d
-            #force =F
-        )
-        self._pybullet_client.setJointMotorControl2(
-            bodyIndex=self.Stoch3,
-            jointIndex=(self._joint_name_to_id["fr_spring_joint"]),
-            controlMode=self._pybullet_client.POSITION_CONTROL,
-            targetPosition=0,
-            positionGain=k_p,
-            velocityGain=k_d
-            #force=F
-        )
-        self._pybullet_client.setJointMotorControl2(
-            bodyIndex=self.Stoch3,
-            jointIndex=(self._joint_name_to_id["bl_spring_joint"]),
-            controlMode=self._pybullet_client.POSITION_CONTROL,
-            targetPosition=0,
-            positionGain=k_p,
-            velocityGain=k_d
-        )

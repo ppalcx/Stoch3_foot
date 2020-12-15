@@ -58,12 +58,12 @@ if __name__ == '__main__':
 		#env._pybullet_client.stepSimulation()
 		#print('Roll:',math.degrees(env.support_plane_estimated_roll),
 		      #'Pitch:',math.degrees(env.support_plane_estimated_pitch))
-		action = policy.dot(state)
-		#action = np.array([1,.5,.5,.5,.5,1,1,.5,.5,.5,.5,1,0,0,0,0])
+		#action = policy.dot(state)
+		action = np.array([1,.5,.5,.5,.5,1,1,.5,.5,.5,.5,1,0,0,0,0])
 		state, r, _, angle = env.step(action)
 		t_r += r
 
-		# if(i_step % 1 ==0):
-		# 	    env.vis_foot_traj()
+		if(i_step % 1 ==0):
+			    env.vis_foot_traj()
 
 	print("Total_reward "+ str(t_r))
