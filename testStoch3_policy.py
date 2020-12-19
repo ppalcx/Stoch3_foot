@@ -5,11 +5,13 @@ import argparse
 from fabulous.color import blue,green,red,bold
 import numpy as np
 import math
+import datetime
+from matplotlib import pyplot as plt
 PI = np.pi
 
 
 #policy to be tested 
-policy = np.load("experiments/1Dec1/iterations/best_policy.npy")
+policy = np.load("experiments/15Dec1/iterations/best_policy.npy")
 
 rpy_accurate = []
 rpy_noisy = []
@@ -53,6 +55,10 @@ if __name__ == '__main__':
 	green('\nCoeff. of friction:'),red(env.friction),
 	green('\nMotor saturation torque:'),red(env.clips))
 
+
+	ROT=[]
+	tot_energy=[]
+
 	for i_step in range(args.EpisodeLength):
 
 		#env._pybullet_client.stepSimulation()
@@ -60,10 +66,32 @@ if __name__ == '__main__':
 		      #'Pitch:',math.degrees(env.support_plane_estimated_pitch))
 		#action = policy.dot(state)
 		action = np.array([1,.5,.5,.5,.5,1,1,.5,.5,.5,.5,1,0,0,0,0])
-		state, r, _, angle = env.step(action)
+		state, r, _, angle,energy = env.step(action)
+
+		RPY=state[-3:].tolist()
+		ROT.append([datetime.datetime.now(),*RPY]) #*un zip
+
+		ene=energy.tolist()
+		tot_energy.append(ene)
+		# print(tot_energy)
+		final_energy=np.sum(tot_energy)
+		print("total energy", final_energy)
+
 		t_r += r
 
-		if(i_step % 1 ==0):
-			    env.vis_foot_traj()
+		# if(i_step % 1 ==0):
+		# 	    env.vis_foot_traj()
 
 	print("Total_reward "+ str(t_r))
+
+
+	plt.style.use('classic')
+	RPY_DATA = list(zip(*ROT))
+	fig, ax = plt.subplots()
+	ax.plot(RPY_DATA[0], RPY_DATA[1], color='b', linestyle='--', label='Roll')
+	ax.plot(RPY_DATA[0], RPY_DATA[2], color='r', linestyle=':',label='Pitch')
+	#ax.plot(RPY_DATA[0], RPY_DATA[3], color='g', linestyle='--',label='Yaw')
+	leg = ax.legend();
+	# Add gridlines
+	ax.grid(linestyle='-', linewidth='0.5')
+	plt.show()

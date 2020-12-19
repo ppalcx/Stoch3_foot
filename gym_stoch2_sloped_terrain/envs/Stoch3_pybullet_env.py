@@ -522,10 +522,11 @@ class Stoch3Env(gym.Env):
 
 
         energy_spent = self.do_simulation(action, n_frames=self._frame_skip)
+        print(energy_spent)
 
         ob = self.GetObservation()
         reward, done = self._get_reward(energy_spent)
-        return ob, reward, done, {}
+        return ob, reward, done, {},energy_spent
 
     def CurrentVelocities(self):
         '''
